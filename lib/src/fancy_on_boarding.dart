@@ -15,6 +15,7 @@ class FancyOnBoarding extends StatefulWidget {
   final String doneButtonText;
   final String skipButtonText;
   final bool showSkipButton;
+  final Color color;
 
   FancyOnBoarding({
     @required this.pageList,
@@ -23,6 +24,7 @@ class FancyOnBoarding extends StatefulWidget {
     this.doneButtonText = "Done",
     this.skipButtonText = "Skip",
     this.showSkipButton = true,
+    this.color,
   }) : assert(pageList.length != 0 && onDoneButtonPressed != null);
 
   @override
@@ -78,23 +80,21 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
           slideUpdateStream: this.slideUpdateStream,
         ),
         Positioned(
-          bottom: 8,
-          right: 8,
+          bottom: 20,
+          right: 16,
           child: Opacity(
             opacity: _getOpacity(),
-            child: FlatButton(
-              shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(30.0)),
-              color: const Color(0x88FFFFFF),
-              child: Text(
-                widget.doneButtonText,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.w800),
-              ),
-              onPressed:
-                  _getOpacity() == 1.0 ? widget.onDoneButtonPressed : () {},
+            child: GestureDetector(
+              child: Container(
+                  padding: EdgeInsets.all(8),
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: widget.color),
+                  child: Icon(Icons.arrow_forward_ios,
+                      size: 40, color: Colors.white)),
+              onTap: _getOpacity() == 1.0 ? widget.onDoneButtonPressed : () {},
             ),
           ),
         ),

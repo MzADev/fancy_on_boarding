@@ -14,11 +14,9 @@ class PageModel {
     this.heroAssetColor,
     this.title,
     this.body,
-    @required this.iconAssetPath,
+    this.iconAssetPath,
   })  : assert(title != null),
         assert(body != null),
         assert(color != null),
-        assert(heroAssetPath != null),
-        assert(iconAssetPath != null);
-
+        assert(heroAssetPath != null);
 }

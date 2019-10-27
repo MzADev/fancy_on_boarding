@@ -100,7 +100,8 @@ class PageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 55.0,
+      padding: const EdgeInsets.only(bottom: 32),
+      width: 50.0,
       height: 65.0,
       child: Center(
         child: Container(
@@ -109,20 +110,16 @@ class PageBubble extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: viewModel.isHollow
-                ? const Color(0x88FFFFFF)
+                ? Colors.blueAccent
                     .withAlpha((0x88 * viewModel.activePercent).round())
-                : const Color(0x88FFFFFF),
+                : Colors.blueAccent,
             border: Border.all(
               color: viewModel.isHollow
-                  ? const Color(0x88FFFFFF).withAlpha(
+                  ? Colors.blueAccent.withAlpha(
                       (0x88 * (1.0 - viewModel.activePercent)).round())
                   : Colors.transparent,
               width: 3.0,
             ),
-          ),
-          child: Opacity(
-            opacity: viewModel.activePercent,
-            child: _renderImageAsset(viewModel.iconAssetPath, color: viewModel.color)
           ),
         ),
       ),
