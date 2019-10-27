@@ -16,6 +16,7 @@ class FancyOnBoarding extends StatefulWidget {
   final String skipButtonText;
   final bool showSkipButton;
   final Color color;
+  final Icon nextIcon;
 
   FancyOnBoarding({
     @required this.pageList,
@@ -25,6 +26,7 @@ class FancyOnBoarding extends StatefulWidget {
     this.skipButtonText = "Skip",
     this.showSkipButton = true,
     this.color,
+    @required this.nextIcon,
   }) : assert(pageList.length != 0 && onDoneButtonPressed != null);
 
   @override
@@ -92,8 +94,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: widget.color),
-                  child: Icon(Icons.arrow_forward_ios,
-                      size: 40, color: Colors.white)),
+                  child: widget.nextIcon),
               onTap: _getOpacity() == 1.0 ? widget.onDoneButtonPressed : () {},
             ),
           ),
